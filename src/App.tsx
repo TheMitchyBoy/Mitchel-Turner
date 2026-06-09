@@ -48,7 +48,7 @@ export default function App() {
       <Header />
 
       {/* Hero */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20">
+      <section className="relative min-h-screen flex flex-col px-6 pt-20 pb-10">
         <div
           className="absolute inset-0 opacity-30"
           style={{
@@ -60,7 +60,7 @@ export default function App() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative text-center max-w-3xl"
+          className="relative flex-1 flex flex-col items-center justify-center text-center max-w-3xl mx-auto w-full"
         >
           <p
             className="font-mono text-sm tracking-widest uppercase mb-4"
@@ -104,7 +104,7 @@ export default function App() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-8"
+          className="relative flex justify-center pt-10"
         >
           <ChevronDown className="w-6 h-6" style={{ color: 'var(--color-mist)' }} />
         </motion.div>
