@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ExternalLink, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import Header from './components/Header'
 import RainCanvas from './components/RainCanvas'
-import RainGauge from './components/RainGauge'
+import HeadlineTicker from './components/HeadlineTicker'
+import BeatExplorer from './components/BeatExplorer'
 import StoryMap from './components/StoryMap'
-import Timeline from './components/Timeline'
-import TopicConstellation from './components/TopicConstellation'
+import PublicMeetings from './components/PublicMeetings'
+import InvestigationFiles from './components/InvestigationFiles'
 import StoryCards from './components/StoryCards'
-import ReactionMaker from './components/ReactionMaker'
+import TipAndRecords from './components/TipAndRecords'
 import Footer from './components/Footer'
-import { DOSSIER_LINK } from './data/content'
 
 function SectionTitle({ children, subtitle }: { children: React.ReactNode; subtitle?: string }) {
   return (
@@ -40,12 +40,12 @@ function SectionTitle({ children, subtitle }: { children: React.ReactNode; subti
 }
 
 export default function App() {
-  const [rainActive, setRainActive] = useState(true)
+  const [activeBeat, setActiveBeat] = useState<string | null>(null)
 
   return (
     <div className="relative min-h-screen" style={{ background: 'var(--color-deep)' }}>
-      <RainCanvas active={rainActive} />
-      <Header rainActive={rainActive} onRainToggle={() => setRainActive(!rainActive)} />
+      <RainCanvas />
+      <Header />
 
       {/* Hero */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20">
@@ -74,11 +74,13 @@ export default function App() {
             <span className="text-gradient italic">Rain Coast</span>
           </h1>
 
-          <p className="text-lg md:text-xl max-w-xl mx-auto mb-8" style={{ color: 'var(--color-mist)' }}>
+          <p className="text-lg md:text-xl max-w-xl mx-auto mb-4" style={{ color: 'var(--color-mist)' }}>
             Local reporting on politics, community, and the issues that shape life on the island.
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center">
+          <HeadlineTicker />
+
+          <div className="flex flex-wrap gap-4 justify-center mt-8">
             <a
               href="#stories"
               className="px-6 py-3 rounded-full font-medium text-sm transition-all hover:scale-105"
@@ -90,11 +92,11 @@ export default function App() {
               Read Stories
             </a>
             <a
-              href="#about"
+              href="#meetings"
               className="px-6 py-3 rounded-full font-medium text-sm glass transition-all hover:scale-105"
               style={{ color: 'var(--color-mist)' }}
             >
-              About Me
+              Public Meetings
             </a>
           </div>
         </motion.div>
@@ -115,7 +117,7 @@ export default function App() {
             About Me
           </SectionTitle>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -141,10 +143,7 @@ export default function App() {
               </p>
             </motion.div>
 
-            <div className="space-y-6">
-              <RainGauge />
-              <ReactionMaker />
-            </div>
+            <TipAndRecords />
           </div>
         </div>
       </section>
@@ -155,74 +154,40 @@ export default function App() {
           <SectionTitle subtitle="Politics, community, investigations, and maritime">
             Latest Coverage
           </SectionTitle>
-          <StoryCards />
+          <StoryCards activeBeat={activeBeat} />
         </div>
       </section>
 
-      {/* Map */}
-      <section id="map" className="section-padding">
+      {/* Beats + Map */}
+      <section id="beats" className="section-padding">
         <div className="max-w-6xl mx-auto">
-          <SectionTitle subtitle="Explore where the stories happen">
-            Ketchikan Story Map
+          <SectionTitle subtitle="Coverage organized by topic — filter stories and map locations">
+            Reporting Beats
           </SectionTitle>
-          <StoryMap />
+          <BeatExplorer activeBeat={activeBeat} onBeatChange={setActiveBeat} />
+          <div className="mt-10">
+            <StoryMap activeBeat={activeBeat} />
+          </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section id="timeline" className="section-padding" style={{ background: 'rgba(26, 58, 74, 0.15)' }}>
+      {/* Public Meetings */}
+      <section id="meetings" className="section-padding" style={{ background: 'rgba(26, 58, 74, 0.15)' }}>
         <div className="max-w-6xl mx-auto">
-          <SectionTitle subtitle="From arrival to investigations">
-            Reporting Timeline
+          <SectionTitle subtitle="Where local decisions get made — and what I'm watching">
+            Public Meetings
           </SectionTitle>
-          <Timeline />
+          <PublicMeetings />
         </div>
       </section>
 
-      {/* Topics */}
-      <section id="topics" className="section-padding">
+      {/* Investigations */}
+      <section id="investigations" className="section-padding">
         <div className="max-w-6xl mx-auto">
-          <SectionTitle subtitle="How local issues connect across the island">
-            Topic Constellation
+          <SectionTitle subtitle="Open folders, public records, and ongoing work">
+            Investigation Files
           </SectionTitle>
-          <TopicConstellation />
-        </div>
-      </section>
-
-      {/* Dossier */}
-      <section id="dossier" className="section-padding" style={{ background: 'rgba(26, 58, 74, 0.15)' }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <SectionTitle subtitle="Public records and community accounts">
-            Investigation Dossier
-          </SectionTitle>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass rounded-2xl p-8 md:p-12"
-          >
-            <h3 className="font-serif text-2xl text-white mb-4">
-              PeaceHealth Dossier
-            </h3>
-            <p className="mb-8" style={{ color: 'var(--color-mist)' }}>
-              An ongoing compilation of public records, community accounts, and reporting
-              on healthcare in Ketchikan. Access the full dossier via Google Drive.
-            </p>
-            <a
-              href={DOSSIER_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-medium transition-all hover:scale-105"
-              style={{
-                background: 'linear-gradient(135deg, #c4705a, #a05540)',
-                color: '#fff',
-              }}
-            >
-              Access Dossier
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </motion.div>
+          <InvestigationFiles />
         </div>
       </section>
 

@@ -1,22 +1,16 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, CloudRain } from 'lucide-react'
-
-interface HeaderProps {
-  rainActive: boolean
-  onRainToggle: () => void
-}
+import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { href: '#about', label: 'About' },
   { href: '#stories', label: 'Stories' },
-  { href: '#map', label: 'Map' },
-  { href: '#timeline', label: 'Timeline' },
-  { href: '#topics', label: 'Topics' },
-  { href: '#dossier', label: 'Dossier' },
+  { href: '#beats', label: 'Beats' },
+  { href: '#meetings', label: 'Meetings' },
+  { href: '#investigations', label: 'Files' },
 ]
 
-export default function Header({ rainActive, onRainToggle }: HeaderProps) {
+export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -48,21 +42,6 @@ export default function Header({ rainActive, onRainToggle }: HeaderProps) {
               {link.label}
             </a>
           ))}
-
-          <button
-            onClick={onRainToggle}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm transition-all"
-            style={{
-              background: rainActive ? 'rgba(78, 205, 196, 0.2)' : 'rgba(255,255,255,0.05)',
-              color: rainActive ? '#4ecdc4' : 'var(--color-mist)',
-              border: `1px solid ${rainActive ? 'rgba(78, 205, 196, 0.4)' : 'rgba(255,255,255,0.1)'}`,
-            }}
-            aria-label={rainActive ? 'Turn off rain mode' : 'Turn on rain mode'}
-            aria-pressed={rainActive}
-          >
-            <CloudRain className="w-4 h-4" />
-            Rain
-          </button>
         </nav>
 
         <button
@@ -93,14 +72,6 @@ export default function Header({ rainActive, onRainToggle }: HeaderProps) {
                 {link.label}
               </a>
             ))}
-            <button
-              onClick={() => { onRainToggle(); setMobileOpen(false) }}
-              className="w-full px-6 py-3 text-sm text-left flex items-center gap-2"
-              style={{ color: rainActive ? '#4ecdc4' : 'var(--color-mist)' }}
-            >
-              <CloudRain className="w-4 h-4" />
-              Rain Mode {rainActive ? 'On' : 'Off'}
-            </button>
           </motion.nav>
         )}
       </AnimatePresence>

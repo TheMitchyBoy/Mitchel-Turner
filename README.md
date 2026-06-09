@@ -4,13 +4,13 @@ A modern personal journalism site for Mitchel Turner, covering local topics and 
 
 ## Features
 
-- **Rain Mode** — Interactive rain canvas that responds to your cursor (toggle in the nav)
-- **Ketchikan Rain Gauge** — Animated annual rainfall counter you can click to add drops
-- **Story Map** — Clickable map of Ketchikan with coverage area pins
-- **Topic Constellation** — Interactive network showing how local issues connect
-- **Reporting Timeline** — Scroll-driven timeline of journalism milestones
+- **Headline Ticker** — Rotating featured headlines in the hero
+- **Reporting Beats** — Filter stories and map pins by beat (borough, schools, healthcare, maritime, community)
+- **Story Map** — Clickable Ketchikan map tied to real stories per location
+- **Public Meetings Board** — Expandable agendas for borough, school board, city council, and planning commission
+- **Investigation Files** — Folder-style dossier browser with document listings
+- **Tip Line & Records Guide** — Send a tip or learn how to request public records in Alaska
 - **Story Cards** — Filterable story grid with expandable previews
-- **Reaction Maker** — Fun emoji reactions to local news
 
 ## Development
 
