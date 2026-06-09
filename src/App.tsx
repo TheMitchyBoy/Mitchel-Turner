@@ -117,9 +117,26 @@ export default function App() {
             About Me
           </SectionTitle>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr] gap-10 lg:gap-14 items-start max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mx-auto md:mx-0 w-full max-w-[320px]"
+            >
+              <div className="rounded-2xl overflow-hidden glass p-1.5">
+                <img
+                  src="/mitchel-turner.jpg"
+                  alt="Mitchel Turner in Ketchikan, Alaska"
+                  className="w-full rounded-xl object-cover aspect-[2/3]"
+                  width={683}
+                  height={1024}
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="space-y-5 text-base leading-relaxed"
@@ -135,14 +152,32 @@ export default function App() {
                 captain when needed, help others around town when free. Journalism is just something
                 extra for me.
               </p>
+
+              <h3 className="font-serif text-xl text-white pt-2">My Mission</h3>
               <p>
                 A lot of people like to listen about what's going on in town. I've always liked to
-                be a part of it. I do like keeping people informed — there's something special about
-                telling someone a story. Their reaction grows something, maybe even connects a dot
-                or two.
+                be a part of it.
+              </p>
+              <p>
+                My mission? Well I don't quite have one, at least not yet. Maybe it'll change.
+              </p>
+              <p>
+                I do like keeping people informed — there's something special about telling someone
+                a story. Their reaction grows something, maybe even connects a dot or two. I think
+                that's about all I'm up to.
               </p>
             </motion.div>
+          </div>
+        </div>
+      </section>
 
+      {/* Contact */}
+      <section id="contact" className="section-padding" style={{ background: 'rgba(26, 58, 74, 0.15)' }}>
+        <div className="max-w-6xl mx-auto">
+          <SectionTitle subtitle="Tips, questions, and how to request public records">
+            Get In Touch
+          </SectionTitle>
+          <div className="max-w-2xl mx-auto">
             <TipAndRecords />
           </div>
         </div>
