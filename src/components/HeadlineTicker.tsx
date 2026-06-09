@@ -16,11 +16,11 @@ export default function HeadlineTicker() {
   if (headlineTicker.length === 0) return null
 
   return (
-    <div className="glass rounded-full px-5 py-2.5 max-w-md mx-auto mt-8">
-      <p className="text-[10px] uppercase tracking-widest mb-1" style={{ color: 'var(--color-aurora)' }}>
+    <div className="glass rounded-2xl px-6 py-4 md:px-8 md:py-5 w-full max-w-xl mx-auto mt-8">
+      <p className="text-xs uppercase tracking-widest mb-2" style={{ color: 'var(--color-aurora)' }}>
         Latest
       </p>
-      <div className="h-6 overflow-hidden relative">
+      <div className="min-h-[3.5rem] md:min-h-[4rem] overflow-hidden relative flex items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.p
             key={index}
@@ -28,7 +28,7 @@ export default function HeadlineTicker() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.3 }}
-            className="text-sm text-white font-medium truncate absolute inset-x-0"
+            className="text-base md:text-lg text-white font-medium leading-snug absolute inset-x-0"
           >
             {headlineTicker[index]}
           </motion.p>
