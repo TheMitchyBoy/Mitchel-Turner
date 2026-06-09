@@ -125,13 +125,14 @@ export default function App() {
               className="mx-auto md:mx-0 w-full max-w-[320px]"
             >
               <div className="rounded-2xl overflow-hidden glass p-1.5">
-                <img
-                  src="/mitchel-turner.jpg"
-                  alt="Mitchel Turner in Ketchikan, Alaska"
-                  className="w-full rounded-xl object-cover aspect-[2/3]"
-                  width={683}
-                  height={1024}
-                />
+                <div className="photo-tone rounded-xl aspect-[2/3]">
+                  <img
+                    src="/mitchel-turner.jpg"
+                    alt="Mitchel Turner in Ketchikan, Alaska"
+                    width={683}
+                    height={1024}
+                  />
+                </div>
               </div>
             </motion.div>
 
