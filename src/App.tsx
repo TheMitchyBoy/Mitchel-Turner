@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import Header from './components/Header'
 import RainCanvas from './components/RainCanvas'
 import HeadlineTicker from './components/HeadlineTicker'
-import BeatExplorer from './components/BeatExplorer'
 import PublicMeetings from './components/PublicMeetings'
 import InvestigationFiles from './components/InvestigationFiles'
 import StoryCards from './components/StoryCards'
@@ -39,8 +37,6 @@ function SectionTitle({ children, subtitle }: { children: React.ReactNode; subti
 }
 
 export default function App() {
-  const [activeBeat, setActiveBeat] = useState<string | null>(null)
-
   return (
     <div className="relative min-h-screen" style={{ background: 'var(--color-deep)' }}>
       <RainCanvas />
@@ -189,17 +185,7 @@ export default function App() {
           <SectionTitle subtitle="Politics, community, investigations, and maritime">
             Latest Coverage
           </SectionTitle>
-          <StoryCards activeBeat={activeBeat} />
-        </div>
-      </section>
-
-      {/* Beats */}
-      <section id="beats" className="section-padding">
-        <div className="max-w-6xl mx-auto">
-          <SectionTitle subtitle="Coverage organized by topic — filter stories below">
-            Reporting Beats
-          </SectionTitle>
-          <BeatExplorer activeBeat={activeBeat} onBeatChange={setActiveBeat} />
+          <StoryCards />
         </div>
       </section>
 

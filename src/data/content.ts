@@ -6,7 +6,6 @@ export interface Story {
   date: string
   readTime: string
   featured?: boolean
-  beat: string
 }
 
 export interface PublicMeeting {
@@ -18,14 +17,6 @@ export interface PublicMeeting {
   time: string
   agenda: string[]
   coverage: string
-}
-
-export interface Beat {
-  id: string
-  label: string
-  description: string
-  color: string
-  storyIds: string[]
 }
 
 export interface InvestigationFile {
@@ -46,7 +37,6 @@ export const stories: Story[] = [
     date: '2025',
     readTime: '15 min',
     featured: true,
-    beat: 'healthcare',
   },
   {
     id: 'borough-budget',
@@ -56,7 +46,6 @@ export const stories: Story[] = [
     date: '2025',
     readTime: '8 min',
     featured: true,
-    beat: 'borough',
   },
   {
     id: 'cruise-season',
@@ -65,7 +54,6 @@ export const stories: Story[] = [
     category: 'community',
     date: '2024',
     readTime: '6 min',
-    beat: 'community',
   },
   {
     id: 'harbor-expansion',
@@ -74,7 +62,6 @@ export const stories: Story[] = [
     category: 'maritime',
     date: '2024',
     readTime: '7 min',
-    beat: 'maritime',
   },
   {
     id: 'school-board',
@@ -83,7 +70,6 @@ export const stories: Story[] = [
     category: 'politics',
     date: '2024',
     readTime: '5 min',
-    beat: 'schools',
   },
   {
     id: 'north-end',
@@ -92,45 +78,6 @@ export const stories: Story[] = [
     category: 'community',
     date: '2024',
     readTime: '4 min',
-    beat: 'community',
-  },
-]
-
-export const beats: Beat[] = [
-  {
-    id: 'borough',
-    label: 'Borough Politics',
-    description: 'Assembly meetings, budgets, ordinances, and how local government spends your tax dollars.',
-    color: '#4ecdc4',
-    storyIds: ['borough-budget'],
-  },
-  {
-    id: 'schools',
-    label: 'School Board',
-    description: 'Staffing, curriculum, facilities, and the decisions made in Tuesday night sessions.',
-    color: '#c084fc',
-    storyIds: ['school-board'],
-  },
-  {
-    id: 'healthcare',
-    label: 'Healthcare',
-    description: 'Hospital administration, access to care, and community health on the island.',
-    color: '#c4705a',
-    storyIds: ['peacehealth'],
-  },
-  {
-    id: 'maritime',
-    label: 'Harbor & Maritime',
-    description: 'Working waterfront, harbor expansion, ferries, and the boats that keep Ketchikan running.',
-    color: '#5a9a7a',
-    storyIds: ['harbor-expansion'],
-  },
-  {
-    id: 'community',
-    label: 'Community',
-    description: 'Neighborhood life, tourism economics, and the people who make this town home.',
-    color: '#6b8cae',
-    storyIds: ['cruise-season', 'north-end'],
   },
 ]
 
