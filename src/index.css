@@ -2,6 +2,7 @@
 
 @theme {
   --font-serif: "DM Serif Display", Georgia, serif;
+  --font-signature: "Allura", "Brush Script MT", cursive;
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
@@ -86,6 +87,12 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.font-signature {
+  font-family: var(--font-signature);
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 .section-padding {

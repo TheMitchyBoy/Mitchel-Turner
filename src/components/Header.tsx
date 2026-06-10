@@ -28,7 +28,7 @@ export default function Header() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="font-serif text-xl text-white hover:opacity-80 transition-opacity">
+        <a href="#" className="font-signature text-3xl md:text-4xl text-white hover:opacity-80 transition-opacity leading-none pt-1">
           Mitchel Turner
         </a>
 

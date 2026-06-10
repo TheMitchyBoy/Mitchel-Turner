@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-4xl mx-auto text-center">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Anchor className="w-5 h-5" style={{ color: 'var(--color-aurora)' }} />
-          <span className="font-serif text-lg text-white">Mitchel Turner</span>
+          <span className="font-signature text-3xl text-white">Mitchel Turner</span>
         </div>
 
         <p className="text-sm mb-6" style={{ color: 'var(--color-mist)' }}>
