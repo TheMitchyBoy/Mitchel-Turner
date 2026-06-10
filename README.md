@@ -23,3 +23,18 @@ npm run dev
 npm run build
 npm run preview
 ```
+
+## Deploy to SiteGround
+
+1. Run `npm run build` on your computer (or in this repo).
+2. Open the **`dist`** folder — this is what you upload, not the whole project.
+3. In SiteGround Site Tools → **Site** → **File Manager**, open **`public_html`**.
+4. Upload **everything inside `dist`** into `public_html`:
+   - `index.html`
+   - `.htaccess`
+   - `assets/` folder
+   - `favicon.svg`, `mitchel-turner.jpg`, etc.
+5. Do **not** upload the `dist` folder itself — only its contents should sit directly in `public_html`.
+6. Visit your domain. If you still see a blank page, hard-refresh (Ctrl+Shift+R) or clear cache.
+
+If the site lives in a subfolder (e.g. `yoursite.com/blog/`), say so — the base path may need adjusting.
