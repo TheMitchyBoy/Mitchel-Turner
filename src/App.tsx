@@ -5,7 +5,6 @@ import Header from './components/Header'
 import RainCanvas from './components/RainCanvas'
 import HeadlineTicker from './components/HeadlineTicker'
 import BeatExplorer from './components/BeatExplorer'
-import StoryMap from './components/StoryMap'
 import PublicMeetings from './components/PublicMeetings'
 import InvestigationFiles from './components/InvestigationFiles'
 import StoryCards from './components/StoryCards'
@@ -194,16 +193,13 @@ export default function App() {
         </div>
       </section>
 
-      {/* Beats + Map */}
+      {/* Beats */}
       <section id="beats" className="section-padding">
         <div className="max-w-6xl mx-auto">
-          <SectionTitle subtitle="Coverage organized by topic — filter stories and map locations">
+          <SectionTitle subtitle="Coverage organized by topic — filter stories below">
             Reporting Beats
           </SectionTitle>
           <BeatExplorer activeBeat={activeBeat} onBeatChange={setActiveBeat} />
-          <div className="mt-10">
-            <StoryMap activeBeat={activeBeat} />
-          </div>
         </div>
       </section>
 

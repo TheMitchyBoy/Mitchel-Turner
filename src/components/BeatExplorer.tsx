@@ -9,7 +9,7 @@ export default function BeatExplorer({ activeBeat, onBeatChange }: BeatExplorerP
   return (
     <div>
       <p className="text-sm text-center mb-6" style={{ color: 'var(--color-mist)' }}>
-        I organize coverage by beat. Pick one to filter stories and highlight locations on the map.
+        I organize coverage by beat. Pick one to filter stories.
       </p>
 
       <div className="flex flex-wrap gap-2 justify-center mb-8">
@@ -52,7 +52,7 @@ export default function BeatExplorer({ activeBeat, onBeatChange }: BeatExplorerP
                   {beat.description}
                 </p>
                 <p className="text-xs mt-3 font-mono" style={{ color: beat.color }}>
-                  {beat.storyIds.length} stor{beat.storyIds.length === 1 ? 'y' : 'ies'} · {beat.pinIds.length} location{beat.pinIds.length === 1 ? '' : 's'}
+                  {beat.storyIds.length} stor{beat.storyIds.length === 1 ? 'y' : 'ies'}
                 </p>
               </>
             )

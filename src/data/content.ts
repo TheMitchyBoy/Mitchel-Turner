@@ -9,17 +9,6 @@ export interface Story {
   beat: string
 }
 
-export interface MapPin {
-  id: string
-  x: number
-  y: number
-  label: string
-  story: string
-  category: string
-  beat: string
-  storyId?: string
-}
-
 export interface PublicMeeting {
   id: string
   body: string
@@ -37,7 +26,6 @@ export interface Beat {
   description: string
   color: string
   storyIds: string[]
-  pinIds: string[]
 }
 
 export interface InvestigationFile {
@@ -108,16 +96,6 @@ export const stories: Story[] = [
   },
 ]
 
-export const mapPins: MapPin[] = [
-  { id: 'downtown', x: 52, y: 68, label: 'Downtown', story: 'Cruise season economics and downtown development', category: 'community', beat: 'community', storyId: 'cruise-season' },
-  { id: 'harbor', x: 38, y: 75, label: 'Thomas Basin', story: 'Harbor expansion and working waterfront', category: 'maritime', beat: 'maritime', storyId: 'harbor-expansion' },
-  { id: 'peacehealth', x: 58, y: 42, label: 'PeaceHealth', story: 'Healthcare investigation dossier', category: 'investigation', beat: 'healthcare', storyId: 'peacehealth' },
-  { id: 'borough', x: 65, y: 55, label: 'Borough Hall', story: 'Budget breakdowns and local governance', category: 'politics', beat: 'borough', storyId: 'borough-budget' },
-  { id: 'schools', x: 48, y: 35, label: 'School District', story: 'School board coverage', category: 'politics', beat: 'schools', storyId: 'school-board' },
-  { id: 'north', x: 72, y: 28, label: 'North End', story: 'Community profiles from the north side', category: 'community', beat: 'community', storyId: 'north-end' },
-  { id: 'tongass', x: 25, y: 45, label: 'Tongass Narrows', story: 'Maritime operations and ferry routes', category: 'maritime', beat: 'maritime', storyId: 'harbor-expansion' },
-]
-
 export const beats: Beat[] = [
   {
     id: 'borough',
@@ -125,7 +103,6 @@ export const beats: Beat[] = [
     description: 'Assembly meetings, budgets, ordinances, and how local government spends your tax dollars.',
     color: '#4ecdc4',
     storyIds: ['borough-budget'],
-    pinIds: ['borough'],
   },
   {
     id: 'schools',
@@ -133,7 +110,6 @@ export const beats: Beat[] = [
     description: 'Staffing, curriculum, facilities, and the decisions made in Tuesday night sessions.',
     color: '#c084fc',
     storyIds: ['school-board'],
-    pinIds: ['schools'],
   },
   {
     id: 'healthcare',
@@ -141,7 +117,6 @@ export const beats: Beat[] = [
     description: 'Hospital administration, access to care, and community health on the island.',
     color: '#c4705a',
     storyIds: ['peacehealth'],
-    pinIds: ['peacehealth'],
   },
   {
     id: 'maritime',
@@ -149,7 +124,6 @@ export const beats: Beat[] = [
     description: 'Working waterfront, harbor expansion, ferries, and the boats that keep Ketchikan running.',
     color: '#5a9a7a',
     storyIds: ['harbor-expansion'],
-    pinIds: ['harbor', 'tongass'],
   },
   {
     id: 'community',
@@ -157,7 +131,6 @@ export const beats: Beat[] = [
     description: 'Neighborhood life, tourism economics, and the people who make this town home.',
     color: '#6b8cae',
     storyIds: ['cruise-season', 'north-end'],
-    pinIds: ['downtown', 'north'],
   },
 ]
 
