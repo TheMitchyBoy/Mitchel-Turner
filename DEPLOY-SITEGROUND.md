@@ -1,62 +1,72 @@
-# Deploy to SiteGround
+# Deploy to SiteGround from GitHub
 
-## The white page problem
+This repo is set up so **SiteGround pulls a pre-built site** — not the React source code.
 
-If you see a **blank white page**, you almost certainly uploaded **source code** instead of the **built site**.
+## How it works
 
-Check the `index.html` on your server. If it contains:
+Every push to `main` triggers a GitHub Action that:
 
-```html
-<script type="module" src="/src/main.tsx"></script>
-```
+1. Runs `npm ci` and `npm run build`
+2. Pushes the built files to the **`siteground`** branch (only `index.html`, `assets/`, `.htaccess`, images, etc.)
 
-That is **wrong** — browsers cannot run that on SiteGround.
+SiteGround should pull from the **`siteground`** branch — **not** `main`.
 
-After a correct build, `index.html` must look like:
+---
 
-```html
-<script type="module" crossorigin src="./assets/index-xxxxx.js"></script>
-<link rel="stylesheet" crossorigin href="./assets/index-xxxxx.css">
-```
+## One-time SiteGround setup
 
-## Easy deploy (recommended)
+1. Push this repo to GitHub (if you haven't already).
+2. Wait for the **Build for SiteGround** action to finish on `main` (GitHub → Actions tab).
+3. Confirm the **`siteground`** branch exists on GitHub.
+4. In **SiteGround Site Tools** → **Devs** → **Git**:
+   - **Create New Repository** (or edit existing)
+   - **Repository URL:** your GitHub repo (HTTPS or SSH)
+   - **Branch:** `siteground` ← important
+   - **Install path:** `public_html` (or your staging folder)
+5. Click **Deploy** (or enable auto-deploy on push if your plan supports it).
 
-On your computer, in this project folder:
+### First deploy cleanup
+
+If you previously uploaded source files, delete these from `public_html` before deploying:
+
+- `src/` folder
+- Root `index.html` that contains `/src/main.tsx`
+- `node_modules/`, `package.json`, etc.
+
+After a correct deploy, `public_html/index.html` should reference `./assets/index-*.js`.
+
+---
+
+## Staging vs production
+
+| Site | Typical path |
+|------|----------------|
+| Staging | https://mitchelt86.sg-host.com/ → staging `public_html` |
+| Production | https://mitchelturner.com/ → main domain `public_html` |
+
+Use the same **`siteground`** branch for both — just point each SiteGround Git install at the right folder.
+
+---
+
+## Manual upload (backup option)
+
+If Git deploy isn't available on your plan:
 
 ```bash
 npm install
 npm run pack
 ```
 
-This creates **`siteground-upload.zip`** in the project root.
+Upload **`siteground-upload.zip`** to `public_html` and extract. See `UPLOAD-THESE-FILES.txt` inside the zip.
 
-Then in **SiteGround Site Tools**:
+---
 
-1. Go to **Site** → **File Manager**
-2. Open **`public_html`**
-3. Delete any old `index.html` that references `/src/main.tsx`
-4. **Upload** `siteground-upload.zip`
-5. Right-click the zip → **Extract**
-6. Make sure you now have:
-   - `public_html/index.html`
-   - `public_html/assets/` (folder with `.js` and `.css` files)
-   - `public_html/.htaccess`
-   - `public_html/mitchel-turner.jpg`
-7. Delete `siteground-upload.zip` from the server
-8. Visit https://mitchelt86.sg-host.com/ and hard-refresh (Ctrl+Shift+R)
+## Troubleshooting white page
 
-## What NOT to upload
+| Symptom | Cause | Fix |
+|---------|--------|-----|
+| White page | SiteGround pulling `main` instead of `siteground` | Change branch to `siteground` in Git settings |
+| White page | `index.html` has `/src/main.tsx` | Wrong files on server — redeploy from `siteground` branch |
+| White page | Missing `assets/` folder | Re-run GitHub Action, then Deploy in SiteGround |
 
-Do **not** upload these to `public_html`:
-
-- `src/` folder
-- `node_modules/`
-- Root `index.html` (the dev version)
-- `package.json`, `vite.config.ts`, etc.
-- The `dist` folder itself — only **contents inside** `dist`
-
-## Staging URL
-
-Your staging site: https://mitchelt86.sg-host.com/
-
-When ready for production, repeat the same steps in `public_html` for **mitchelturner.com** (you may need to remove or replace the old WordPress files first).
+Hard refresh after deploy: **Ctrl+Shift+R** (Windows) or **Cmd+Shift+R** (Mac).
